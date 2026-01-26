@@ -1,5 +1,6 @@
 package exercise13;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -8,13 +9,27 @@ public class EmployeeManagement {
 	List<Employee> employees;
 	// Constructor
 
-	public EmployeeManagement(List<Employee> employees) {
-		this.employees = employees;
+	public EmployeeManagement() {
+		this.employees = new ArrayList<Employee>();
 	}
 
 	// Methods
 	public void addEmployee(Employee employee) {
 		this.employees.add(employee);
+	}
+
+	public Employee findEmployee(String id) {
+		Employee employee = this.employees.stream().filter(item -> item.id.equals(id)).findFirst().orElse(null);
+		return employee;
+	}
+
+	public void addCertificate(String id, Certificate certificates) {
+		Employee employee = findEmployee(id);
+		if (employee == null) {
+			return;
+		}
+		employee.addCertificate(certificates);
+
 	}
 
 	public void updateEmployee(String id) {
@@ -97,5 +112,21 @@ public class EmployeeManagement {
 
 	public List<Employee> findAll() {
 		return this.employees;
+	}
+
+	public void showCertificates() {
+
+		if (employees.isEmpty()) {
+			System.out.println("No employees");
+			return;
+		}
+
+		employees.forEach(emp -> {
+			System.out.println("Employee ID: " + emp.getid());
+			System.out.println("Certificates:");
+			System.out.println(emp.showCertificates());
+			System.out.println("--------------------------------");
+		});
+
 	}
 }

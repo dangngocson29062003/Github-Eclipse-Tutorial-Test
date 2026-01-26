@@ -2,6 +2,7 @@ package exercise13;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class Employee {
 	protected String id;
@@ -89,4 +90,10 @@ public abstract class Employee {
 	public void addCertificate(Certificate cert) {
 		certificates.add(cert);
 	}
+
+	public String showCertificates() {
+		return certificates.isEmpty() ? "No certificates"
+				: certificates.stream().map(cert -> "   - " + cert.toString()).collect(Collectors.joining("\n"));
+	}
+
 }

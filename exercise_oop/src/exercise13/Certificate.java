@@ -1,26 +1,26 @@
 package exercise13;
 
 public class Certificate {
-	private String certificatedID;
+	private String certificateID;
 	private String certificateName;
 	private String certificateRank;
-	private String certificatedDate;
+	private String certificateDate;
 
 	// Constructor
 	public Certificate(String certificatedID, String certificateName, String certificateRank, String certificatedDate) {
-		this.certificatedID = certificatedID;
+		this.certificateID = certificatedID;
 		this.certificateName = certificateName;
 		this.certificateRank = certificateRank;
-		this.certificatedDate = certificatedDate;
+		this.certificateDate = certificatedDate;
 	}
 	// Getters & Setters
 
-	public String getCertificatedID() {
-		return certificatedID;
+	public String getCertificateID() {
+		return certificateID;
 	}
 
-	public void setCertificatedID(String certificatedID) {
-		this.certificatedID = certificatedID;
+	public void setCertificateID(String certificateID) {
+		this.certificateID = certificateID;
 	}
 
 	public String getCertificateName() {
@@ -39,12 +39,18 @@ public class Certificate {
 		this.certificateRank = certificateRank;
 	}
 
-	public String getCertificatedDate() {
-		return certificatedDate;
+	public String getCertificateDate() {
+		return certificateDate;
 	}
 
-	public void setCertificatedDate(String certificatedDate) {
-		this.certificatedDate = certificatedDate;
+	public void setCertificateDate(String certificateDate) {
+		this.certificateDate = certificateDate;
 	}
 
+	// Methods
+	@Override
+	public String toString() {
+		return "ID: " + certificateID + " | " + "Name: " + certificateName + " | " + "Rank: " + certificateRank + " | "
+				+ "Date: " + certificateDate + ";";
+	}
 }
